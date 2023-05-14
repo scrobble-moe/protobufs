@@ -2,14 +2,31 @@ syntax = "proto3";
 
 package moe.scrobble.auth.v1;
 
-message PlexPin {
-  string pin = 1;
+enum WebAuthnAction {
+  AUTHENTICATION = 0;
+  REGISTRATION = 1;
 }
 
-message PlexToken {
-  string token = 1;
+message PlexAuthRequest {
+  string plex_token = 1;
+}
+message PlexAuthResponse {
+  WebAuthnAction action = 1;
+  string options = 2;
+  string username = 3;
+  string avatar_url = 4;
 }
 
-// service PlexAuthService {
-//   rpc
-// }
+message WebAuthnRequest {
+  string plex_token = 1;
+  string verification = 2;
+}
+
+message WebAuthnResponse {
+  bool success = 1;
+}
+
+service AuthService {
+  rpc PlexAuth(PlexAuthRequest) returns (PlexAuthResponse) {}
+  rpc WebAuthn(WebAuthnRequest) returns (WebAuthnResponse) {}
+}
