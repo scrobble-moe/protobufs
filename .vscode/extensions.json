@@ -1,0 +1,6 @@
+{
+  "recommendations": [
+    "bufbuild.vscode-buf",
+    "pbkit.vscode-pbkit"
+  ]
+}

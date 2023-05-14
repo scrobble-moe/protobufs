@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package moe.scrobble.auth.v1;
+
+message PlexPin {
+  string pin = 1;
+}
+
+message PlexToken {
+  string token = 1;
+}
+
+// service PlexAuthService {
+//   rpc
+// }

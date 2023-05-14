@@ -1,0 +1,11 @@
+version: v1
+name: buf.build/scrobble.moe/protobufs
+breaking:
+  use:
+    - FILE
+lint:
+  use:
+    - DEFAULT
+  except:
+    - ENUM_ZERO_VALUE_SUFFIX
+    - ENUM_VALUE_PREFIX
