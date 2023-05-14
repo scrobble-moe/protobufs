@@ -1,5 +1,5 @@
 version: v1
-name: buf.build/scrobble.moe/protobufs
+name: buf.build/scrobble-moe/protobufs
 breaking:
   use:
     - FILE
