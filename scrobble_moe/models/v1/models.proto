@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package moe.scrobble.models.v1;
+package scrobble_moe.models.v1;
 
 enum WebauthnAction {
   AUTHENTICATION = 0;
@@ -13,10 +13,9 @@ enum Role {
 }
 
 message UserRequest {
-  string id = 1;
-  string username = 2;
-  string email = 3;
-  int32 plex_id = 4;
+  optional string id = 1;
+  optional string email = 3;
+  optional int32 plex_id = 4;
 }
 
 message UserResponse {

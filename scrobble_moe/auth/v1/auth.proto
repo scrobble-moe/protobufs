@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package moe.scrobble.auth.v1;
+package scrobble_moe.auth.v1;
 
 enum WebAuthnAction {
   AUTHENTICATION = 0;
