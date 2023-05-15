@@ -1,42 +1,38 @@
 syntax = "proto3";
 
-package scrobble_moe.models.v1;
-
-enum WebauthnAction {
-  AUTHENTICATION = 0;
-  REGISTRATION = 1;
-}
+package moe.scrobble.models.v1;
 
 enum Role {
   USER = 0;
   ADMIN = 1;
 }
 
-message UserRequest {
+message GetUserRequest {
   optional string id = 1;
   optional string email = 3;
   optional int32 plex_id = 4;
 }
 
-message UserResponse {
+message GetUserResponse {
   string id = 1;
-  string created_at = 2;
-  string updated_at = 3;
   string username = 4;
   string email = 5;
   int32 plex_id = 6;
-  string plex_auth_token = 7;
   string thumb = 8;
-  WebauthnAction challange_usage = 9;
-  string challenge = 10;
-  string challenge_expires_at = 11;
   Role role = 12;
   repeated Authenticator authenticators = 13;
   repeated Token tokens = 15;
 }
 
+message GetUsersRequest {}
+
+message GetUsersResponse {
+  repeated GetUserResponse users = 1;
+}
+
 service UserService {
-  rpc User(UserRequest) returns (UserResponse) {}
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+  rpc GetUsers(GetUsersRequest) returns (GetUsersResponse) {}
 }
 
 enum Transport {
