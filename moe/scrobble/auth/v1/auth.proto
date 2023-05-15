@@ -21,8 +21,3 @@ message WebAuthnRequest {
 }
 
 message WebAuthnResponse {}
-
-service AuthService {
-  rpc PlexAuth(PlexAuthRequest) returns (PlexAuthResponse) {}
-  rpc WebAuthn(WebAuthnRequest) returns (WebAuthnResponse) {}
-}

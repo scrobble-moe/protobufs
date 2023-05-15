@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package moe.scrobble.feed.v1;
+
+message ScrobbleFeedRequest {}
+
+message ScrobbleFeedResponse {
+  string data = 1;
+}

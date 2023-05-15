@@ -30,11 +30,6 @@ message GetUsersResponse {
   repeated GetUserResponse users = 1;
 }
 
-service UserService {
-  rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
-  rpc GetUsers(GetUsersRequest) returns (GetUsersResponse) {}
-}
-
 enum Transport {
   USB = 0;
   BLE = 1;

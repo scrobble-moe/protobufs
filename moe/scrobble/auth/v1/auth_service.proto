@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package moe.scrobble.auth.v1;
+
+import "moe/scrobble/auth/v1/auth.proto";
+
+service AuthService {
+  rpc PlexAuth(PlexAuthRequest) returns (PlexAuthResponse) {}
+  rpc WebAuthn(WebAuthnRequest) returns (WebAuthnResponse) {}
+}
