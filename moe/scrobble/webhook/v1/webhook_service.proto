@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package moe.scrobble.webhook.v1;
+
+import "moe/scrobble/webhook/v1/webhook.proto";
+
+service WebhookService {
+  rpc Scrobble(ScrobbleRequest) returns (ScrobbleResponse) {}
+}
