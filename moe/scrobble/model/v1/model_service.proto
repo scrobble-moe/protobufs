@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package moe.scrobble.model.v1;
+
+import "moe/scrobble/model/v1/model.proto";
+
+service ModelService {
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+  rpc GetUsers(GetUsersRequest) returns (GetUsersResponse) {}
+  rpc GetServer(GetServerRequest) returns (GetServerResponse) {}
+  rpc GetServers(GetServersRequest) returns (GetServersResponse) {}
+  rpc AddServer(AddServerRequest) returns (AddServerResponse) {}
+}

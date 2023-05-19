@@ -1,6 +1,8 @@
 syntax = "proto3";
 
-package moe.scrobble.models.v1;
+package moe.scrobble.model.v1;
+
+//User
 
 enum Role {
   USER = 0;
@@ -9,8 +11,8 @@ enum Role {
 
 message GetUserRequest {
   optional string id = 1;
-  optional string email = 3;
-  optional int32 plex_id = 4;
+  optional string email = 2;
+  optional int32 plex_id = 3;
 }
 
 message GetUserResponse {
@@ -24,11 +26,44 @@ message GetUserResponse {
   repeated Token tokens = 15;
 }
 
+message Server {
+  string id = 1;
+  string uuid = 2;
+  string secret = 3;
+}
+
 message GetUsersRequest {}
 
 message GetUsersResponse {
   repeated GetUserResponse users = 1;
 }
+
+//Server
+
+message GetServerRequest {
+  string id = 1;
+}
+
+message GetServerResponse {
+  Server server = 1;
+}
+
+message GetServersRequest {}
+
+message GetServersResponse {
+  repeated Server servers = 1;
+}
+
+message AddServerRequest {
+  string uuid = 1;
+  string name = 3;
+}
+
+message AddServerResponse {
+  Server server = 1;
+}
+
+//Authenticator
 
 enum Transport {
   USB = 0;
