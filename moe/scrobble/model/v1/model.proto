@@ -82,6 +82,22 @@ message Authenticator {
   repeated Transport transports = 7;
 }
 
+message GetAuthenticatorRequest {
+  string id = 1;
+}
+
+message GetAuthenticatorResponse {
+  Authenticator authenticator = 1;
+}
+
+message GetAuthenticatorsRequest {}
+
+message GetAuthenticatorsResponse {
+  repeated Authenticator authenticators = 1;
+}
+
+//Token
+
 enum TokenType {
   ACCESS = 0;
   REFRESH = 1;

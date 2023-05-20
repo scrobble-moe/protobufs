@@ -5,9 +5,16 @@ package moe.scrobble.model.v1;
 import "moe/scrobble/model/v1/model.proto";
 
 service ModelService {
+  // User
   rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
   rpc GetUsers(GetUsersRequest) returns (GetUsersResponse) {}
+
+  // Server
   rpc GetServer(GetServerRequest) returns (GetServerResponse) {}
   rpc GetServers(GetServersRequest) returns (GetServersResponse) {}
   rpc AddServer(AddServerRequest) returns (AddServerResponse) {}
+
+  // Authenticator
+  rpc GetAuthenticator(GetAuthenticatorRequest) returns (GetAuthenticatorResponse) {}
+  rpc GetAuthenticators(GetAuthenticatorsRequest) returns (GetAuthenticatorsResponse) {}
 }
