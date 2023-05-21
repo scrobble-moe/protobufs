@@ -74,12 +74,13 @@ enum Transport {
 
 message Authenticator {
   string id = 1;
-  string aaguid = 2;
-  bytes credential_id = 3;
-  bytes credential_public_key = 4;
-  int32 counter = 5;
-  bool revoked = 6;
-  repeated Transport transports = 7;
+  string friendly_name = 2;
+  string aaguid = 3;
+  bytes credential_id = 4;
+  bytes credential_public_key = 5;
+  int32 counter = 6;
+  bool revoked = 7;
+  repeated Transport transports = 8;
 }
 
 message GetAuthenticatorRequest {
