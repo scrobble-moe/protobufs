@@ -7,4 +7,15 @@ import "moe/scrobble/auth/v1/auth.proto";
 service AuthService {
   rpc PlexAuth(PlexAuthRequest) returns (PlexAuthResponse) {}
   rpc WebAuthn(WebAuthnRequest) returns (WebAuthnResponse) {}
+
+  // Authenticator
+  rpc GetAuthenticator(GetAuthenticatorRequest) returns (GetAuthenticatorResponse) {}
+  rpc GetAuthenticators(GetAuthenticatorsRequest) returns (GetAuthenticatorsResponse) {}
+  rpc GetAuthenticatorRegistrationOptions(GetAuthenticatorRegistrationOptionsRequest) returns (GetAuthenticatorRegistrationOptionsResponse) {}
+  rpc AddAuthenticator(AddAuthenticatorRequest) returns (AddAuthenticatorResponse) {}
+  rpc RevokeAuthenticator(RevokeAuthenticatorRequest) returns (RevokeAuthenticatorResponse) {}
+
+  // Tokens
+  rpc GetTokens(GetTokensRequest) returns (GetTokensResponse) {}
+  rpc RevokeToken(RevokeTokenRequest) returns (RevokeTokenResponse) {}
 }

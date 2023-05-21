@@ -22,8 +22,6 @@ message GetUserResponse {
   int32 plex_id = 6;
   string thumb = 8;
   Role role = 12;
-  repeated Authenticator authenticators = 13;
-  repeated Token tokens = 15;
 }
 
 message Server {
@@ -61,73 +59,4 @@ message AddServerRequest {
 
 message AddServerResponse {
   Server server = 1;
-}
-
-//Authenticator
-
-enum Transport {
-  USB = 0;
-  BLE = 1;
-  NFC = 2;
-  INTERNAL = 3;
-}
-
-message Authenticator {
-  string id = 1;
-  string friendly_name = 2;
-  string aaguid = 3;
-  bytes credential_id = 4;
-  bytes credential_public_key = 5;
-  int32 counter = 6;
-  bool revoked = 7;
-  repeated Transport transports = 8;
-}
-
-message GetAuthenticatorRequest {
-  string id = 1;
-}
-
-message GetAuthenticatorResponse {
-  Authenticator authenticator = 1;
-}
-
-message GetAuthenticatorsRequest {}
-
-message GetAuthenticatorsResponse {
-  repeated Authenticator authenticators = 1;
-}
-
-message GetAuthenticatorRegistrationOptionsRequest {}
-
-message GetAuthenticatorRegistrationOptionsResponse {
-  string options = 1;
-}
-
-message AddAuthenticatorRequest {
-  string name = 1;
-  string verification = 2;
-}
-
-message AddAuthenticatorResponse {}
-
-message RevokeAuthenticatorRequest {
-  string id = 1;
-}
-
-message RevokeAuthenticatorResponse {}
-
-//Token
-
-enum TokenType {
-  ACCESS = 0;
-  REFRESH = 1;
-}
-
-message Token {
-  string id = 1;
-  uint32 created_at = 2;
-  uint32 updated_at = 3;
-  string hashed_token = 4;
-  uint32 expires_at = 5;
-  TokenType type = 6;
 }
