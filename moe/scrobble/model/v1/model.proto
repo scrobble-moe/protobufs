@@ -96,6 +96,14 @@ message GetAuthenticatorsResponse {
   repeated Authenticator authenticators = 1;
 }
 
+message RevokeAuthenticatorRequest {
+  string id = 1;
+}
+
+message RevokeAuthenticatorResponse {
+  Authenticator authenticator = 1;
+}
+
 //Token
 
 enum TokenType {
