@@ -17,5 +17,7 @@ service ModelService {
   // Authenticator
   rpc GetAuthenticator(GetAuthenticatorRequest) returns (GetAuthenticatorResponse) {}
   rpc GetAuthenticators(GetAuthenticatorsRequest) returns (GetAuthenticatorsResponse) {}
+  rpc GetAuthenticatorRegistrationOptions(GetAuthenticatorRegistrationOptionsRequest) returns (GetAuthenticatorRegistrationOptionsResponse) {}
+  rpc AddAuthenticator(AddAuthenticatorRequest) returns (AddAuthenticatorResponse) {}
   rpc RevokeAuthenticator(RevokeAuthenticatorRequest) returns (RevokeAuthenticatorResponse) {}
 }

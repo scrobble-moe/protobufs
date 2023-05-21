@@ -96,6 +96,20 @@ message GetAuthenticatorsResponse {
   repeated Authenticator authenticators = 1;
 }
 
+message GetAuthenticatorRegistrationOptionsRequest {}
+
+message GetAuthenticatorRegistrationOptionsResponse {
+  string options = 1;
+}
+
+message AddAuthenticatorRequest {
+  string verification = 1;
+}
+
+message AddAuthenticatorResponse {
+  Authenticator authenticator = 1;
+}
+
 message RevokeAuthenticatorRequest {
   string id = 1;
 }
