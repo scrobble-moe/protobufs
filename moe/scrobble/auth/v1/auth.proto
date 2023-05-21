@@ -79,6 +79,7 @@ message RevokeAuthenticatorResponse {}
 message Token {
   string id = 1;
   uint32 expires = 2;
+  bool current = 3;
 }
 
 message GetTokensRequest {}
