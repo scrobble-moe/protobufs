@@ -104,7 +104,8 @@ message GetAuthenticatorRegistrationOptionsResponse {
 }
 
 message AddAuthenticatorRequest {
-  string verification = 1;
+  string name = 1;
+  string verification = 2;
 }
 
 message AddAuthenticatorResponse {}
