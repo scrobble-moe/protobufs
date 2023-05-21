@@ -107,17 +107,13 @@ message AddAuthenticatorRequest {
   string verification = 1;
 }
 
-message AddAuthenticatorResponse {
-  Authenticator authenticator = 1;
-}
+message AddAuthenticatorResponse {}
 
 message RevokeAuthenticatorRequest {
   string id = 1;
 }
 
-message RevokeAuthenticatorResponse {
-  Authenticator authenticator = 1;
-}
+message RevokeAuthenticatorResponse {}
 
 //Token
 
