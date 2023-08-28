@@ -167,8 +167,8 @@ message LinkedAccount {
   Provider provider = 4;
   string account_id = 5;
   string access_token = 6;
-  uint32 access_token_expires = 7;
-  string refresh_token = 8;
+  optional uint32 access_token_expires = 7;
+  optional string refresh_token = 8;
 
   repeated Scrobble scrobbles = 9;
   User user = 10;
