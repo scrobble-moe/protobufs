@@ -24,38 +24,6 @@ message WebAuthnResponse {}
 
 // Authenticator
 
-enum Transport {
-  USB = 0;
-  BLE = 1;
-  NFC = 2;
-  INTERNAL = 3;
-}
-
-message Authenticator {
-  string id = 1;
-  string friendly_name = 2;
-  string aaguid = 3;
-  bytes credential_id = 4;
-  bytes credential_public_key = 5;
-  int32 counter = 6;
-  bool revoked = 7;
-  repeated Transport transports = 8;
-}
-
-message GetAuthenticatorRequest {
-  string id = 1;
-}
-
-message GetAuthenticatorResponse {
-  Authenticator authenticator = 1;
-}
-
-message GetAuthenticatorsRequest {}
-
-message GetAuthenticatorsResponse {
-  repeated Authenticator authenticators = 1;
-}
-
 message GetAuthenticatorRegistrationOptionsRequest {}
 
 message GetAuthenticatorRegistrationOptionsResponse {

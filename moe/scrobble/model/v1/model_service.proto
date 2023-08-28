@@ -9,6 +9,10 @@ service ModelService {
   rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
   rpc GetUsers(GetUsersRequest) returns (GetUsersResponse) {}
 
+  // Authenticator
+  rpc GetAuthenticator(GetAuthenticatorRequest) returns (GetAuthenticatorResponse) {}
+  rpc GetAuthenticators(GetAuthenticatorsRequest) returns (GetAuthenticatorsResponse) {}
+
   // Server
   rpc GetServer(GetServerRequest) returns (GetServerResponse) {}
   rpc GetServers(GetServersRequest) returns (GetServersResponse) {}

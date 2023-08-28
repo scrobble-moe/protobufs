@@ -2,11 +2,27 @@ syntax = "proto3";
 
 package moe.scrobble.model.v1;
 
-//User
-
 enum Role {
   USER = 0;
   ADMIN = 1;
+}
+
+//User
+message User {
+  string id = 1;
+  uint32 created_at = 2;
+  uint32 updated_at = 3;
+  string username = 4;
+  string email = 5;
+  uint32 plex_id = 6;
+  string plex_auth_token = 7;
+  string thumb = 8;
+  Role role = 9;
+
+  repeated Authenticator authenticators = 10;
+  repeated LinkedAccount accounts = 11;
+  repeated Scrobble scrobbles = 12;
+  repeated Server servers = 13;
 }
 
 message GetUserRequest {
@@ -24,19 +40,63 @@ message GetUserResponse {
   Role role = 12;
 }
 
-message Server {
-  string id = 1;
-  string uuid = 2;
-  string secret = 3;
-}
-
 message GetUsersRequest {}
 
 message GetUsersResponse {
   repeated GetUserResponse users = 1;
 }
 
+//Authenticator
+enum Transport {
+  USB = 0;
+  BLE = 1;
+  NFC = 2;
+  INTERNAL = 3;
+}
+
+message Authenticator {
+  string id = 1;
+  uint32 created_at = 2;
+  uint32 updated_at = 3;
+  string friendly_name = 4;
+  string aaguid = 5;
+  bytes credential_id = 6;
+  bytes credential_public_key = 7;
+  uint32 counter = 8;
+  bool revoked = 9;
+  repeated Transport transports = 10;
+
+  User user = 11;
+  string user_id = 12;
+}
+
+message GetAuthenticatorRequest {
+  string id = 1;
+}
+
+message GetAuthenticatorResponse {
+  Authenticator authenticator = 1;
+}
+
+message GetAuthenticatorsRequest {}
+
+message GetAuthenticatorsResponse {
+  repeated Authenticator authenticators = 1;
+}
+
 //Server
+
+message Server {
+  string id = 1;
+  uint32 created_at = 2;
+  uint32 updated_at = 3;
+  string uuid = 4;
+  string secret = 5;
+  string name = 6;
+
+  repeated User users = 7;
+  repeated Scrobble scrobbles = 8;
+}
 
 message GetServerRequest {
   string id = 1;
@@ -59,4 +119,60 @@ message AddServerRequest {
 
 message AddServerResponse {
   Server server = 1;
+}
+
+// Scrobble
+
+message Scrobble {
+  string id = 1;
+  uint32 created_at = 2;
+  uint32 updated_at = 3;
+  string provider_media_id = 4;
+  uint32 episode = 5;
+
+  User user = 6;
+  string user_id = 7;
+  Server server = 8;
+  string server_id = 9;
+  repeated LinkedAccount accounts = 10;
+  repeated ScrobbleProviderStatus status = 11;
+}
+
+enum ScrobbleStatus {
+  IGNORED = 0;
+  TRACKED = 1;
+  ERRORED = 2;
+}
+
+message ScrobbleProviderStatus {
+  string id = 1;
+  uint32 created_at = 2;
+  uint32 updated_at = 3;
+  ScrobbleStatus status = 4;
+  Provider provider = 5;
+
+  Scrobble scrobble = 6;
+  string scrobble_id = 7;
+}
+
+// Linked Account
+
+enum Provider {
+  ANILIST = 0;
+  KITSU = 1;
+}
+
+message LinkedAccount {
+  string id = 1;
+  uint32 created_at = 2;
+  uint32 updated_at = 3;
+  Provider provider = 4;
+  string account_id = 5;
+  string access_token = 6;
+  uint32 access_token_expires = 7;
+  string refresh_token = 8;
+
+  repeated Scrobble scrobbles = 9;
+  User user = 10;
+  string user_id = 11;
 }
