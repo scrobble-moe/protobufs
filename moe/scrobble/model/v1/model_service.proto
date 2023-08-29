@@ -19,6 +19,10 @@ service ModelService {
   rpc AddServer(AddServerRequest) returns (AddServerResponse) {}
 
   // Scrobble
+  rpc GetScrobble(GetScrobbleRequest) returns (GetScrobbleResponse) {}
+  rpc GetScrobbles(GetScrobblesRequest) returns (GetScrobblesResponse) {}
+  rpc AddScrobble(AddScrobbleRequest) returns (AddScrobbleResponse) {}
+  rpc RemoveScrobble(RemoveScrobbleRequest) returns (RemoveScrobbleResponse) {}
 
   // Linked Account
   rpc GetLinkedAccount(GetLinkedAccountRequest) returns (GetLinkedAccountResponse) {}
