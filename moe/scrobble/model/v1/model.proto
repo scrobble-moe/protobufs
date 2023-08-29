@@ -167,15 +167,6 @@ message GetScrobblesResponse {
   repeated Scrobble scrobbles = 1;
 }
 
-message AddScrobbleRequest {
-  string provider_media_id = 1;
-  uint32 episode = 2;
-}
-
-message AddScrobbleResponse {
-  Scrobble scrobble = 1;
-}
-
 message RemoveScrobbleRequest {
   string id = 1;
 }
