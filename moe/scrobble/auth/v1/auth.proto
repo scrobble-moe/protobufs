@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package moe.scrobble.auth.v1;
 
+import "google/protobuf/timestamp.proto";
+
 message PlexAuthRequest {
   string plex_token = 1;
 }
@@ -46,7 +48,7 @@ message RevokeAuthenticatorResponse {}
 // Token
 message Token {
   string id = 1;
-  uint32 expires = 2;
+  google.protobuf.Timestamp expires = 2;
   bool current = 3;
 }
 
