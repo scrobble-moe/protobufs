@@ -139,13 +139,21 @@ message Scrobble {
   repeated ScrobbleProviderStatus status = 12;
 }
 
+enum AnimeInfoStatus {
+  FINISHED = 0;
+  RELEASING = 1;
+  NOT_YET_RELEASED = 2;
+  CANCELLED = 3;
+  HIATUS = 4;
+}
+
 message AnimeInfo {
-  string name = 1;
+  string title = 1;
+  AnimeInfoStatus status = 6;
   string description = 2;
-  string image = 3;
-  uint32 episode_count = 4;
-  uint32 episode_length = 5;
-  string status = 6;
+  string cover_image = 3;
+  uint32 episodes = 4;
+  uint32 duration = 5;
 }
 
 enum ScrobbleStatus {
