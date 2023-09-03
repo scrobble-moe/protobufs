@@ -96,7 +96,7 @@ message Server {
   string name = 6;
 
   repeated User users = 7;
-  repeated EpisodeScrobble episodeScrobbles = 8;
+  repeated ScrobbleEpisode scrobble_episodes = 8;
 }
 
 message GetServerRequest {
@@ -131,10 +131,10 @@ message ScrobbleGroup {
   AnimeInfo anime = 5;
   User user = 6;
   string user_id = 7;
-  repeated EpisodeScrobble episodeScrobbles = 8;
+  repeated ScrobbleEpisode scrobble_episodes = 8;
 }
 
-message EpisodeScrobble {
+message ScrobbleEpisode {
   string id = 1;
   google.protobuf.Timestamp created_at = 2;
   google.protobuf.Timestamp updated_at = 3;
@@ -143,7 +143,7 @@ message EpisodeScrobble {
   string scrobble_group_id = 6;
   Server server = 7;
   string server_id = 8;
-  repeated LinkedAccount accounts = 7;
+  repeated LinkedAccount accounts = 9;
   repeated ScrobbleProviderStatus status = 10;
 }
 
@@ -177,29 +177,49 @@ message ScrobbleProviderStatus {
   ScrobbleStatus status = 4;
   Provider provider = 5;
 
-  EpisodeScrobble episodeScrobble = 6;
+  ScrobbleEpisode scrobble_episode = 6;
   string episode_scrobble_id = 7;
 }
 
-message GetScrobbleRequest {
+message GetScrobbleGroupRequest {
   string id = 1;
 }
 
-message GetScrobbleResponse {
-  Scrobble scrobble = 1;
+message GetScrobbleGroupResponse {
+  ScrobbleGroup scrobble_group = 1;
 }
 
-message GetScrobblesRequest {}
+message GetScrobbleGroupsRequest {}
 
-message GetScrobblesResponse {
-  repeated Scrobble scrobbles = 1;
+message GetScrobbleGroupsResponse {
+  repeated ScrobbleGroup scrobble_groups = 1;
 }
 
-message RemoveScrobbleRequest {
+message RemoveScrobbleGroupRequest {
   string id = 1;
 }
 
-message RemoveScrobbleResponse {}
+message RemoveScrobbleGroupResponse {}
+
+message GetScrobbleEpisodeRequest {
+  string id = 1;
+}
+
+message GetScrobbleEpisodeResponse {
+  ScrobbleEpisode scrobble_episode = 1;
+}
+
+message GetScrobbleEpisodesRequest {}
+
+message GetScrobbleEpisodesResponse {
+  repeated ScrobbleEpisode scrobble_episodes = 1;
+}
+
+message RemoveScrobbleEpisodeRequest {
+  string id = 1;
+}
+
+message RemoveScrobbleEpisodeResponse {}
 
 // Linked Account
 
@@ -218,7 +238,7 @@ message LinkedAccount {
   optional google.protobuf.Timestamp access_token_expires = 7;
   optional string refresh_token = 8;
 
-  repeated Scrobble scrobbles = 9;
+  repeated ScrobbleEpisode scrobbles = 9;
   User user = 10;
   string user_id = 11;
 }
