@@ -127,13 +127,23 @@ message Scrobble {
   uint32 updated_at = 3;
   string provider_media_id = 4;
   uint32 episode = 5;
+  AnimeInfo anime = 6;
 
-  User user = 6;
-  string user_id = 7;
-  Server server = 8;
-  string server_id = 9;
-  repeated LinkedAccount accounts = 10;
-  repeated ScrobbleProviderStatus status = 11;
+  User user = 7;
+  string user_id = 8;
+  Server server = 9;
+  string server_id = 10;
+  repeated LinkedAccount accounts = 11;
+  repeated ScrobbleProviderStatus status = 12;
+}
+
+message AnimeInfo {
+  string name = 1;
+  string description = 2;
+  string image = 3;
+  uint32 episode_count = 4;
+  uint32 episode_length = 5;
+  string status = 6;
 }
 
 enum ScrobbleStatus {
