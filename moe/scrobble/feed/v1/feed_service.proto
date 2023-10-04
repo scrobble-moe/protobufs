@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-package moe.scrobble.feed.v1;
-
-import "moe/scrobble/feed/v1/feed.proto";
-
-service FeedService {
-  rpc ScrobbleFeed(ScrobbleFeedRequest) returns (stream ScrobbleFeedResponse) {}
-}

@@ -7,29 +7,29 @@ import "moe/scrobble/model/v1/model.proto";
 service ModelService {
   // User
   rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
-  rpc GetUsers(GetUsersRequest) returns (GetUsersResponse) {}
+  rpc GetUsers(GetUsersRequest) returns (stream GetUsersResponse) {}
 
   // Authenticator
   rpc GetAuthenticator(GetAuthenticatorRequest) returns (GetAuthenticatorResponse) {}
-  rpc GetAuthenticators(GetAuthenticatorsRequest) returns (GetAuthenticatorsResponse) {}
+  rpc GetAuthenticators(GetAuthenticatorsRequest) returns (stream GetAuthenticatorsResponse) {}
 
   // Server
   rpc GetServer(GetServerRequest) returns (GetServerResponse) {}
-  rpc GetServers(GetServersRequest) returns (GetServersResponse) {}
+  rpc GetServers(GetServersRequest) returns (stream GetServersResponse) {}
   rpc AddServer(AddServerRequest) returns (AddServerResponse) {}
 
   // Scrobble
   rpc GetScrobbleGroup(GetScrobbleGroupRequest) returns (GetScrobbleGroupResponse) {}
-  rpc GetScrobbleGroups(GetScrobbleGroupsRequest) returns (GetScrobbleGroupsResponse) {}
+  rpc GetScrobbleGroups(GetScrobbleGroupsRequest) returns (stream GetScrobbleGroupsResponse) {}
   rpc RemoveScrobbleGroup(RemoveScrobbleGroupRequest) returns (RemoveScrobbleGroupResponse) {}
 
   rpc GetScrobbleEpisode(GetScrobbleEpisodeRequest) returns (GetScrobbleEpisodeResponse) {}
-  rpc GetScrobbleEpisodes(GetScrobbleEpisodesRequest) returns (GetScrobbleEpisodesResponse) {}
+  rpc GetScrobbleEpisodes(GetScrobbleEpisodesRequest) returns (stream GetScrobbleEpisodesResponse) {}
   rpc RemoveScrobbleEpisode(RemoveScrobbleEpisodeRequest) returns (RemoveScrobbleEpisodeResponse) {}
 
   // Linked Account
   rpc GetLinkedAccount(GetLinkedAccountRequest) returns (GetLinkedAccountResponse) {}
-  rpc GetLinkedAccounts(GetLinkedAccountsRequest) returns (GetLinkedAccountsResponse) {}
+  rpc GetLinkedAccounts(GetLinkedAccountsRequest) returns (stream GetLinkedAccountsResponse) {}
   rpc AddLinkedAccount(AddLinkedAccountRequest) returns (AddLinkedAccountResponse) {}
   rpc RemoveLinkedAccount(RemoveLinkedAccountRequest) returns (RemoveLinkedAccountResponse) {}
 }

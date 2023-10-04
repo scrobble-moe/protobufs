@@ -4,12 +4,23 @@ package moe.scrobble.model.v1;
 
 import "google/protobuf/timestamp.proto";
 
+enum StreamOperationType {
+  CREATE = 0;
+  UPDATE = 1;
+  DELETE = 2;
+}
+
+message StreamOperation {
+  google.protobuf.Timestamp timestamp = 1;
+  StreamOperationType type = 2;
+}
+
+//User
 enum Role {
   USER = 0;
   ADMIN = 1;
 }
 
-//User
 message User {
   string id = 1;
   google.protobuf.Timestamp created_at = 2;
@@ -35,17 +46,18 @@ message GetUserRequest {
 
 message GetUserResponse {
   string id = 1;
-  string username = 4;
-  string email = 5;
-  int32 plex_id = 6;
-  string thumb = 8;
-  Role role = 12;
+  string username = 2;
+  string email = 3;
+  int32 plex_id = 4;
+  string thumb = 5;
+  Role role = 6;
 }
 
 message GetUsersRequest {}
 
 message GetUsersResponse {
-  repeated GetUserResponse users = 1;
+  StreamOperation stream = 1;
+  repeated GetUserResponse users = 2;
 }
 
 //Authenticator
@@ -83,7 +95,8 @@ message GetAuthenticatorResponse {
 message GetAuthenticatorsRequest {}
 
 message GetAuthenticatorsResponse {
-  repeated Authenticator authenticators = 1;
+  StreamOperation stream = 1;
+  repeated Authenticator authenticators = 2;
 }
 
 //Server
@@ -110,7 +123,8 @@ message GetServerResponse {
 message GetServersRequest {}
 
 message GetServersResponse {
-  repeated Server servers = 1;
+  StreamOperation stream = 1;
+  repeated Server servers = 2;
 }
 
 message AddServerRequest {
@@ -192,7 +206,8 @@ message GetScrobbleGroupResponse {
 message GetScrobbleGroupsRequest {}
 
 message GetScrobbleGroupsResponse {
-  repeated ScrobbleGroup scrobble_groups = 1;
+  StreamOperation stream = 1;
+  repeated ScrobbleGroup scrobble_groups = 2;
 }
 
 message RemoveScrobbleGroupRequest {
@@ -212,7 +227,8 @@ message GetScrobbleEpisodeResponse {
 message GetScrobbleEpisodesRequest {}
 
 message GetScrobbleEpisodesResponse {
-  repeated ScrobbleEpisode scrobble_episodes = 1;
+  StreamOperation stream = 1;
+  repeated ScrobbleEpisode scrobble_episodes = 2;
 }
 
 message RemoveScrobbleEpisodeRequest {
@@ -254,7 +270,8 @@ message GetLinkedAccountResponse {
 message GetLinkedAccountsRequest {}
 
 message GetLinkedAccountsResponse {
-  repeated LinkedAccount accounts = 1;
+  StreamOperation stream = 1;
+  repeated LinkedAccount accounts = 2;
 }
 
 message AddLinkedAccountRequest {
