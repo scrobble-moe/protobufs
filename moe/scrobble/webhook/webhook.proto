@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package moe.scrobble.webhook;
+
+message WebhookPayload {
+
+  enum Provider {
+    PLEX = 0;
+    JELLYFIN = 1;
+  }
+
+  string secret = 1;
+  string username = 2;
+  string server_uuid = 3;
+  string provider_media_id = 4;
+  int32 episode = 5;
+}

@@ -1,0 +1,4 @@
+version: v2
+modules:
+  - path: moe/scrobble
+    name: buf.build/moe/scrobble/protobufs

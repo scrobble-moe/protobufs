@@ -1,0 +1,48 @@
+name: Publish to Cargo & JSR
+
+on: push
+
+permissions: write-all
+
+jobs:
+  codegen:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Buf
+        uses: bufbuild/buf-setup-action@main
+        with:
+          github_token: ${{ github.token }}
+      - name: Generate code
+        run: buf generate
+      - name: Set Package Versions
+        run: |
+          sed -i "s/__PACKAGE_VERSION__/$(cat version)/g" packages/ts/deno.json
+      - name: Copy license & README
+        run: |
+          cp LICENSE packages/ts
+          cp README.md packages/ts
+      - name: Upload TypeScript code
+        uses: actions/upload-artifact@v4
+        with:
+          name: ts_code
+          path: packages/ts
+
+  publish-jsr:
+    runs-on: ubuntu-24.04
+    needs: codegen
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Download TypeScript code
+        uses: actions/download-artifact@v4
+        with:
+          name: ts_code
+      - name: Set up Deno
+        uses: denoland/setup-deno@main
+        with:
+          deno-version: rc
+      - name: Publish to JSR
+        run: deno publish
