@@ -4,7 +4,7 @@ package moe.scrobble.webhook;
 
 message WebhookPayload {
 
-  enum Provider {
+  enum StreamingProvider {
     PLEX = 0;
     JELLYFIN = 1;
   }
@@ -14,4 +14,5 @@ message WebhookPayload {
   string server_uuid = 3;
   string provider_media_id = 4;
   int32 episode = 5;
+  StreamingProvider streaming_provider = 6;
 }
