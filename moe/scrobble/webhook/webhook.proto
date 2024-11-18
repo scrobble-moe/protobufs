@@ -12,7 +12,7 @@ message WebhookPayload {
   string secret = 1;
   string username = 2;
   string server_uuid = 3;
-  string provider_media_id = 4;
+  int32 provider_media_id = 4;
   int32 episode = 5;
   StreamingProvider streaming_provider = 6;
 }
