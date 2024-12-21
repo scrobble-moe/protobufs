@@ -41,8 +41,8 @@ jobs:
         with:
           name: ts_code
       - name: Set up Deno
-        uses: denoland/setup-deno@main
+        uses: denoland/setup-deno@v2
         with:
-          deno-version: rc
+          deno-version: v2.x
       - name: Publish to JSR
         run: deno publish
